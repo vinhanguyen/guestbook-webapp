@@ -12,6 +12,8 @@ import domain.Message;
 public class MessageDaoImpl implements MessageDao {
 	
 	private Connection getConnection() throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		
 		return DriverManager.getConnection(
 				System.getenv("GUESTBOOK_DB_URL"), 
 				System.getenv("GUESTBOOK_DB_USER"), 
