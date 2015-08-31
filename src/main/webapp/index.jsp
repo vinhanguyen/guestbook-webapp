@@ -2,17 +2,26 @@
 <html>
 	<head>
 		<title>Guestbook</title>
+		<link rel="stylesheet" href="<c:url value="/style.css" />">
 	</head>
 	<body>
 		<form action="<c:url value="/guestbook" />" method="post">
-			<p><input type="text" name="author" value="Anonymous"></p>
-			<p><textarea rows="5" cols="100" name="content"></textarea></p>
+			<p>
+				Name:<br>
+				<input type="text" name="author" value="Anonymous">
+			</p>
+			<p>
+				Message:<br>
+				<textarea rows="5" cols="100" name="content"></textarea>
+			</p>
 			<p><input type="submit" value="Submit"></p>
 		</form>
+		
+		<h1>Messages:</h1>
 		<c:forEach var="message" items="${messages}">
-			<div>
-				<p>${message.content}</p>
-				<p>By ${message.author}</p>
+			<div class="message">
+				<p class="author">${message.author} says:</p>
+				<p class="content">${message.content}</p>
 			</div>
 		</c:forEach>
 	</body>
